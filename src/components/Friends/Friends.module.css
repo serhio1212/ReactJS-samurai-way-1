@@ -1,0 +1,32 @@
+
+/*.content {*/
+/*  grid-area: n;*/
+/*  background-color: #99e69f;*/
+/*}*/
+
+.hFriends {
+  padding: 3px;
+  text-align: center;
+  color: cyan;
+}
+
+.descriptionBlock {
+  padding: 0px;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+.ppp {
+  display: inline-block;
+  padding: 3px;
+  color: #faff98;
+  font-size: smaller;
+}
+.img {
+  width: 30px;
+  border-radius: 30px;
+  padding: 5px;
+
+
+}

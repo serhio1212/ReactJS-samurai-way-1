@@ -1,0 +1,65 @@
+.Dialogs {
+    background-color: #99e69f;
+}
+
+.dialogsItems {
+    padding: 10px;
+    background-color: #99e69f;
+}
+
+.dialog {
+    padding: 10px;
+    color: purple;
+    text-decoration: none;
+}
+
+.dialog.active {
+    padding: 10px;
+    color: gold;
+}
+
+.img {
+    width: 30px;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.imgl {
+    width: 30px;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.items {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.messLeft {
+    text-align: right;
+}
+.messLeft.imgl {
+    text-align: right;
+    width: 30px;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.messages .message {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+/*
+
+.active {
+    color: gold;
+    text-decoration: none;
+}*/

@@ -1,0 +1,9 @@
+.items {
+  color: #0050ff;
+}
+
+.items img {
+  width: 3%;
+  border-radius:30px;
+  padding: 5px;
+}

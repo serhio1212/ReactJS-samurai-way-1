@@ -1,0 +1,17 @@
+.items {
+  color: #0050ff;
+}
+
+.items img {
+  width: 3%;
+}
+
+.ButtonBlock {
+  padding: 5px;
+}
+
+
+.items .a {
+  color: #0050ff;
+  padding: 5px;
+}

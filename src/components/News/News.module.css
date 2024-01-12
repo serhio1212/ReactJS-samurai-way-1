@@ -1,0 +1,10 @@
+.content {
+    grid-area: c;
+    background-color: #99e69f;
+}
+
+
+.img {
+    width: 20%;
+    /* height: 400px;*/
+}
