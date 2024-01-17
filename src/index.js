@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import StateJS from './redux/state.js';
-// import {AddPost} from './redux/state.js';
+import {AddPost} from './redux/state.js';
 import {BrowserRouter, Router, Routes, Route, NavLink} from "react-router-dom";
 
 
@@ -15,7 +15,7 @@ root.render(
         <BrowserRouter>
             {/*<AddPost />*/}
             {/*< App StateJS={StateJS} AddPost={AddPost}/>*/}
-            < App StateJS={StateJS}/>
+            < App StateJS={StateJS} AddPost={AddPost}/>
         </BrowserRouter>
     </div>
     // </React.StrictMode>

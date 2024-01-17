@@ -14,7 +14,7 @@ import Common from "./components/common/common.jsx";
 import Friends from "./components/Friends/Friends.jsx";
 import DialogsMessage from "./components/Dialogs/DialogsMessage/DialogsMessage";
 
-function App({StateJS}) {
+function App({StateJS, AddPost}) {
     let [count,setCount] = useState(0);
     return (
         <div className='app-flex'>
@@ -28,7 +28,7 @@ function App({StateJS}) {
                         <Route exact path='/Profile' element={<Profile PostsData={StateJS.ProfilePage.PostsData}/>}/>
                         <Route exact path='/Dialogs' element={<Dialogs MessagesData={StateJS.MessagePage.MessagesData} DialogsData={StateJS.MessagePage.DialogsData} count={count} setCount={setCount}/>} />
                         <Route exact path='/Messages' element={<MyPosts/>}/>
-                        {StateJS.MessagePage.DialogsData.map(k => <Route key={k.id} exact path={`/Dialogs/${k.id}`} element={<DialogsMessage id={k.id} idAcc={k.idAcc} MessagesData={StateJS.MessagePage.MessagesData}/>}/>)}
+                        {StateJS.MessagePage.DialogsData.map(k => <Route key={k.id} exact path={`/Dialogs/${k.id}`} element={<DialogsMessage id={k.id} idAcc={k.idAcc} MessagesData={StateJS.MessagePage.MessagesData} AddPost={AddPost}/>}/>)}
                         <Route exact path='/News' element={<News/>}/>
                         <Route exact path='/Music' element={<Music/>}/>
                         <Route exact path='/Settings' element={<Settings/>}/>

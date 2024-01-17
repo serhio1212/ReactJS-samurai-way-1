@@ -54,19 +54,17 @@ let StateJS = {
             {id: 3, idAcc: 4, name: 'Ekaterina'}]
     }};
 
-// export function AddPost()  {
-//     let newPost = {
-//         id: 5,
-//         message: "postMessage",
-//         likesdata: "",
-//         dislikesdata: "No matter",
-//         likesCount: "0",
-//         dislikescount: "1"
-//     };
-// return ( <>
-//     {/*{StateJS.ProfilePage.PostsData.push(newPost)}*/}
-//     {/*{console.log(StateJS)}*/}
-//     </>
-// );}
+export function AddPost()  {
+    let newPost = {
+        id: 9,
+        idChat: 1,
+        idAcc: 1,
+        message: "No matter"
+    };
+return ( <>
+    {StateJS.MessagePage.MessagesData.push(newPost)}
+        {console.log(StateJS.MessagePage.MessagesData)}
+    </>
+)}
 
 export default StateJS;
