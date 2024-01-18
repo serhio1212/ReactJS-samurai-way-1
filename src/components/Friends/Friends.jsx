@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import cs_style from './Friends.module.css'
 
 function Friends(props) {
-    // debugger;
     let index = 0;
     return (
         <div>
