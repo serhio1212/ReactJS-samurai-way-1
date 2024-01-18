@@ -14,7 +14,7 @@ function Friends(props) {
              {/*) )}*/}
                 {props.ffriends.map((el) => { if (index<=2) {
                     (index++);
-                    return (<div className={cs_style.ppp}><img className = {cs_style.img} src={"/image/cat_" + el.idAcc + ".jpeg"} alt="Ho-ho"/>
+                    return (<div key={el.id} className={cs_style.ppp}><img className = {cs_style.img} src={"/image/cat_" + el.idAcc + ".jpeg"} alt="Ho-ho"/>
                    <div>{props.ffriends[el.id].name}</div></div>)
                 }
 

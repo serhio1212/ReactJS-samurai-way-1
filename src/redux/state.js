@@ -1,3 +1,5 @@
+import { reTree } from "../render";
+
 let StateJS = {
         ProfilePage: {
             PostsData: [
@@ -54,16 +56,24 @@ let StateJS = {
             {id: 3, idAcc: 4, name: 'Ekaterina'}]
     }};
 
-export function AddPost()  {
+export function AddPost(text, idAcc)  {
+    // debugger;
+    let valID = 0
+    Object.entries(StateJS.MessagePage.MessagesData).map((maxI) =>  ++valID-1);
+
+    console.log( valID, "What");
     let newPost = {
-        id: 9,
-        idChat: 1,
-        idAcc: 1,
-        message: "No matter"
+        id: valID,
+        idChat: idAcc ,
+        idAcc:  idAcc ,
+        message: text
     };
+    console.log( idAcc, text,  "What");
 return ( <>
     {StateJS.MessagePage.MessagesData.push(newPost)}
-        {console.log(StateJS.MessagePage.MessagesData)}
+        {/*{console.log(StateJS.MessagePage.MessagesData)}*/}
+        {/*{dialogsPostElement.current.value = ""}*/}
+        {reTree(StateJS)}
     </>
 )}
 

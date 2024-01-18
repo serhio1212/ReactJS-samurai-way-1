@@ -1,15 +1,19 @@
-import React, {useEffect, useState} from "react";
-import {BrowserRouter, Router, Routes, Route, NavLink, Outlet} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter, Router, Routes, Route, NavLink, Outlet } from "react-router-dom";
 import cs_style from './DialogsMessage.module.css';
 import { AddPost } from "../../../redux/state";
 
 function DialogsMessage(props) {
-    let tr = true;
-    let dialogsPostElement = React.createRef();
-    // let ppost = () => {
-    //     let text = dialogsPostElement.current.value;
-    //     alert (text);
-    // }
+    // debugger;
+    let tr=true;
+    let dialogsPostElement=React.createRef();
+    let ppost=(idChat, idAcc) => {
+        // console.log(typeof props.MessagesData.at(-1));
+
+        let text=dialogsPostElement.current.value;
+        props.AddPost(text, props.idAcc);
+
+    }
     return (
         <div>
 
@@ -34,7 +38,10 @@ function DialogsMessage(props) {
             <div>
                 <textarea ref={dialogsPostElement}></textarea>
             </div>
-            <button onClick={() => {props.AddPost()}}>Add post</button>
+            <button onClick={() => {
+                ppost(props.MessagesData.idChat, props.MessagesData.idAcc )
+            }}>Add post
+            </button>
             <button>Remove</button>
 
         </div>

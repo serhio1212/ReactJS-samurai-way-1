@@ -26,7 +26,7 @@ function App({StateJS, AddPost}) {
                     <Routes>
                         <Route exact path='/' element={<Common/>}/>
                         <Route exact path='/Profile' element={<Profile PostsData={StateJS.ProfilePage.PostsData}/>}/>
-                        <Route exact path='/Dialogs' element={<Dialogs MessagesData={StateJS.MessagePage.MessagesData} DialogsData={StateJS.MessagePage.DialogsData} count={count} setCount={setCount}/>} />
+                        <Route exact path='/Dialogs' element={<Dialogs MessagesData={StateJS.MessagePage.MessagesData} DialogsData={StateJS.MessagePage.DialogsData}/>} />
                         <Route exact path='/Messages' element={<MyPosts/>}/>
                         {StateJS.MessagePage.DialogsData.map(k => <Route key={k.id} exact path={`/Dialogs/${k.id}`} element={<DialogsMessage id={k.id} idAcc={k.idAcc} MessagesData={StateJS.MessagePage.MessagesData} AddPost={AddPost}/>}/>)}
                         <Route exact path='/News' element={<News/>}/>
