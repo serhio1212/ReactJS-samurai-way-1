@@ -72,7 +72,7 @@ export function AddPost(text, idAcc) {
             {(text !== "") ? StateJS.MessagePage.MessagesData.push(newPost) : console.log("Text not input")}
             {/*{console.log(StateJS.MessagePage.MessagesData)}*/}
             {/*{dialogsPostElement.current.value = ""}*/}
-            {reTree(StateJS)}
+            {reTree(StateJS, AddPost)}
         </>
     )
 }

@@ -9,7 +9,7 @@ import {BrowserRouter, Router, Routes, Route, NavLink} from "react-router-dom";
 import { reTree } from "./render";
 
 
-reTree(StateJS);
+reTree(StateJS, AddPost);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
