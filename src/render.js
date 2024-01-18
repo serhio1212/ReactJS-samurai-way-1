@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 // import StateJS from './redux/state.js';
 import {AddPost} from './redux/state.js';
 import {BrowserRouter, Router, Routes, Route, NavLink} from "react-router-dom";
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 export let reTree = (StateJS) => {
@@ -14,8 +16,6 @@ export let reTree = (StateJS) => {
         // < React.StrictMode>
         <div>
             <BrowserRouter>
-                {/*<AddPost />*/}
-                {/*< App StateJS={StateJS} AddPost={AddPost}/>*/}
                 < App StateJS={StateJS} AddPost={AddPost}/>
             </BrowserRouter>
         </div>

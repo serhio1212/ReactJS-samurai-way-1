@@ -8,19 +8,7 @@ function Dialogs(props) {
 
     // let DialogItemMap = props.DialogsData.map((d, l) => <DialogItem key={d.name} name={d.name} id={d.id} count={`()=>${props.setCount}(${props.count} = ${props.id})`} setCount={d.setCount}/>);
     let DialogItemMap = props.DialogsData.map((d, l) => <DialogItem key={d.name} name={d.name} id={d.id}/>);
-    // let DialogsMessageMap = (props.MessagesData.map((m, q) => <DialogsMessage key={q} MessageValue={m.message}/>));
- //    console.log(typeof props.DialogsArray);
- //    console.log(Array.isArray(props.DialogsArray.DialogsData));
- //    console.log(Array.isArray(props.DialogsArray.DialogsData.name));
- //    const mmm = Object.entries(props.DialogsArray.DialogsData);
- //    // const nnn = Object.entries(mmm)[0][1][1]
- //    const nnn = Object.entries(mmm)[0][1][1]
- //    const kkk = Object.entries(nnn)
- //    console.log( kkk[0][1]);
- //    // console.log(sss);
- //    console.log("str" / 2);
- //    // console.log(isNaN("str"));
- //    console.log(props.DialogsArray.DialogsData[1].name);
+
     const [userName, updUserName] = useState("Serhio");
 
 
