@@ -13,8 +13,9 @@ import {BrowserRouter, Router, Routes, Route, NavLink, Outlet} from "react-route
 import Common from "./components/common/common.jsx";
 import Friends from "./components/Friends/Friends.jsx";
 import DialogsMessage from "./components/Dialogs/DialogsMessage/DialogsMessage";
+import StateJS, { updateText } from "./redux/state";
 
-function App({StateJS, AddPost}) {
+function App({StateJS, AddPost, MessageTextData}) {
     let [count,setCount] = useState(0);
     return (
         <div className='app-flex'>
@@ -28,7 +29,7 @@ function App({StateJS, AddPost}) {
                         <Route exact path='/Profile' element={<Profile PostsData={StateJS.ProfilePage.PostsData}/>}/>
                         <Route exact path='/Dialogs' element={<Dialogs MessagesData={StateJS.MessagePage.MessagesData} DialogsData={StateJS.MessagePage.DialogsData}/>} />
                         <Route exact path='/Messages' element={<MyPosts/>}/>
-                        {StateJS.MessagePage.DialogsData.map(k => <Route key={k.id} exact path={`/Dialogs/${k.id}`} element={<DialogsMessage id={k.id} idAcc={k.idAcc} MessagesData={StateJS.MessagePage.MessagesData} AddPost={AddPost}/>}/>)}
+                        {StateJS.MessagePage.DialogsData.map(k => <Route key={k.id} exact path={`/Dialogs/${k.id}`} element={<DialogsMessage id={k.id} idAcc={k.idAcc} MessagesData={StateJS.MessagePage.MessagesData} AddPost={AddPost} MessageTextData={MessageTextData} updateText={updateText}/>}/>)}
                         <Route exact path='/News' element={<News/>}/>
                         <Route exact path='/Music' element={<Music/>}/>
                         <Route exact path='/Settings' element={<Settings/>}/>

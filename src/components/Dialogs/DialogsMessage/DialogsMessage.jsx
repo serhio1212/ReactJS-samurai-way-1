@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Router, Routes, Route, NavLink, Outlet } from "react-router-dom";
 import cs_style from './DialogsMessage.module.css';
+
 // import { AddPost } from "../../../redux/state";
 
 function DialogsMessage(props) {
@@ -11,8 +12,11 @@ function DialogsMessage(props) {
     let ppost=(idChat, idAcc) => {
         let text=dialogsPostElement.current.value;
         props.AddPost(text, props.idAcc);
-        console.log(text);
-        dialogsPostElement.current.value = "";
+
+    }
+
+    let onChangeText=(ttext) => {
+        props.updateText(ttext);
 
     }
     return (
@@ -35,7 +39,8 @@ function DialogsMessage(props) {
             })}
 
             <div>
-                <textarea ref={dialogsPostElement} ></textarea>
+                <textarea onChange={() => onChangeText(dialogsPostElement.current.value)} ref={dialogsPostElement}
+                          value={props.MessageTextData.InitText} placeholder={"Input text"}></textarea>
             </div>
             <button onClick={() => {
                 ppost(props.MessagesData.idChat, props.MessagesData.idAcc)

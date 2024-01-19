@@ -49,6 +49,7 @@ let StateJS={
             { id: 8, idChat: 1, idAcc: 0, message: 'Nice!' }
         ]
     },
+    MessageTextData: { InitText: "" },
     sidebar: {
         perusers: [{ id: 0, idAcc: 1, name: 'Mama' },
             { id: 1, idAcc: 2, name: 'Mihail' },
@@ -65,14 +66,23 @@ export function AddPost(text, idAcc) {
         id: valID,
         idChat: idAcc,
         idAcc: idAcc,
-        message: text
+        message: StateJS.MessageTextData.InitText
     };
 
     return (<>
-            {(text !== "") ? StateJS.MessagePage.MessagesData.push(newPost) : console.log("Text not input")}
-            {/*{console.log(StateJS.MessagePage.MessagesData)}*/}
-            {/*{dialogsPostElement.current.value = ""}*/}
-            {reTree(StateJS, AddPost)}
+            {(StateJS.MessageTextData.InitText !== "") ? StateJS.MessagePage.MessagesData.push(newPost) : console.log("Text not input")}
+            {StateJS.MessageTextData.InitText = ""}
+            {reTree(StateJS, AddPost, StateJS.MessageTextData, updateText)}
+        </>
+    )
+}
+
+
+export function updateText(upText) {
+
+    return (<>
+            {StateJS.MessageTextData.InitText=upText}
+            {reTree(StateJS, AddPost, StateJS.MessageTextData, updateText)}
         </>
     )
 }
