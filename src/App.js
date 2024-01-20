@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import ReactDOM from "react-dom/client";
 import './App.css';
 import Header from './components/Header/Header.jsx'
@@ -11,12 +11,9 @@ import Music from './components/Music/Music.jsx'
 import Settings from './components/Settings/Settings.jsx'
 import {BrowserRouter, Router, Routes, Route, NavLink, Outlet} from "react-router-dom";
 import Common from "./components/common/common.jsx";
-import Friends from "./components/Friends/Friends.jsx";
 import DialogsMessage from "./components/Dialogs/DialogsMessage/DialogsMessage";
-import StateJS, { updateText } from "./redux/state";
 
-function App({StateJS, AddPost, MessageTextData}) {
-    let [count,setCount] = useState(0);
+function App({StateJS, AddPost, MessageTextData, updateText}) {
     return (
         <div className='app-flex'>
             <div className='app-wrapper'>
@@ -33,7 +30,6 @@ function App({StateJS, AddPost, MessageTextData}) {
                         <Route exact path='/News' element={<News/>}/>
                         <Route exact path='/Music' element={<Music/>}/>
                         <Route exact path='/Settings' element={<Settings/>}/>
-                        {/*<Route exact path='/Friends' element={<Friends ffrends={StateJS.sidebar.users} />}/>*/}
                     </Routes>
                 </div>
 

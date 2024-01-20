@@ -82,6 +82,7 @@ export function updateText(upText) {
 
     return (<>
             {StateJS.MessageTextData.InitText=upText}
+            {console.log("updateText")}
             {reTree(StateJS, AddPost, StateJS.MessageTextData, updateText)}
         </>
     )

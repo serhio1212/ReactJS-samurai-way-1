@@ -1,27 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Router, Routes, Route, NavLink, Outlet } from "react-router-dom";
 import cs_style from './DialogsMessage.module.css';
 
-// import { AddPost } from "../../../redux/state";
 
 function DialogsMessage(props) {
     let userID=props.idAcc;
-
     let dialogsPostElement=React.createRef();
 
     let ppost=(idChat, idAcc) => {
         let text=dialogsPostElement.current.value;
         props.AddPost(text, props.idAcc);
-
     }
 
     let onChangeText=(ttext) => {
         props.updateText(ttext);
-
     }
+
     return (
         <div>
-
             {/*<div className={cs_style.dialog}>{props.MessageValue.map(el => el.name)}</div>*/}
             {/*{props.MessagesData.map((it) => props.id === props.MessagesData[it.id].idAcc ? ((tr) ?  (tr = !tr) || (*/}
             {/*    <p key={it.id}>{props.MessagesData[it.id].message}</p>) : (tr = !tr) && (*/}
@@ -40,8 +36,9 @@ function DialogsMessage(props) {
 
             <div>
                 <textarea onChange={() => onChangeText(dialogsPostElement.current.value)} ref={dialogsPostElement}
-                          value={props.MessageTextData.InitText} placeholder={"Input text"}></textarea>
+                          value={props.MessageTextData.InitText} placeholder={"Input text"}/>
             </div>
+
             <button onClick={() => {
                 ppost(props.MessagesData.idChat, props.MessagesData.idAcc)
             }}>Add post
