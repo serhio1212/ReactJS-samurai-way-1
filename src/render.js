@@ -7,13 +7,13 @@ import {BrowserRouter, Router, Routes, Route, NavLink} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export let reTree = (StateJS, AddPost, MessageTextData, updateText) => {
+export let reTree = (StateJS, AddPost, AddProPost, updateText, updateProText) => {
 
     root.render(
         // < React.StrictMode>
         <div>
             <BrowserRouter>
-                < App StateJS={StateJS} AddPost={AddPost} MessageTextData={MessageTextData} updateText={updateText}/>
+                < App StateJS={StateJS} AddPost={AddPost} AddProPost={AddProPost} updateText={updateText} updateProText={updateProText}/>
             </BrowserRouter>
         </div>
         // </React.StrictMode>

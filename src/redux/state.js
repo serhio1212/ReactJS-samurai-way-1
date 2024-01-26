@@ -50,6 +50,7 @@ let StateJS={
         ]
     },
     MessageTextData: { InitText: "" },
+    MessageProTextData: { InitText: "Tu" },
     sidebar: {
         perusers: [{ id: 0, idAcc: 1, name: 'Mama' },
             { id: 1, idAcc: 2, name: 'Mihail' },
@@ -71,19 +72,50 @@ export function AddPost(text, idAcc) {
 
     return (<>
             {(StateJS.MessageTextData.InitText !== "") ? StateJS.MessagePage.MessagesData.push(newPost) : console.log("Text not input")}
-            {StateJS.MessageTextData.InitText = ""}
-            {reTree(StateJS, AddPost, StateJS.MessageTextData, updateText)}
+            {StateJS.MessageTextData.InitText=""}
+            {reTree(StateJS, AddPost, AddProPost, updateText, updateProText)}
         </>
     )
 }
 
+export function AddProPost(text) {
+    let valID=0
+    Object.entries(StateJS.MessagePage.MessagesData).map((maxI) => ++valID - 1);
 
-export function updateText(upText) {
+    let newProPost={
+
+        id: valID,
+        message: text,
+        likesdata: "Go, Im ready",
+        dislikesdata: "",
+        likescount: "1",
+        dislikescount: "0"
+
+    };
 
     return (<>
-            {StateJS.MessageTextData.InitText=upText}
-            {console.log("updateText")}
-            {reTree(StateJS, AddPost, StateJS.MessageTextData, updateText)}
+            {(StateJS.MessageProTextData.InitText !== "") ? StateJS.ProfilePage.PostsData.push(newProPost) : console.log("Text not input")}
+            {StateJS.MessageProTextData.InitText=""}
+            {reTree(StateJS, AddPost, AddProPost, updateText, updateProText)}
+        </>
+    )
+}
+
+export function updateText(tText) {
+
+    return (<>
+            {StateJS.MessageTextData.InitText=tText}
+            {console.log("11updateText")}
+            {reTree(StateJS, AddPost, AddProPost, updateText, updateProText)}
+        </>
+    )
+}
+export function updateProText(tttText) {
+
+    return (<>
+            {StateJS.MessageProTextData.InitText=tttText}
+            {console.log("11updateText")}
+            {reTree(StateJS, AddPost, AddProPost, updateText, updateProText)}
         </>
     )
 }

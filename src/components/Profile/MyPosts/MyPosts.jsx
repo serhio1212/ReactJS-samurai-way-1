@@ -5,9 +5,9 @@ import Like from './Post/Like/Like.jsx';
 import cs_style from './MyPosts.module.css';
 
 
-const MyPosts = ({PostsData}) => {
+const MyPosts = (props) => {
 
-    let PostsDataMapP = PostsData.map((p) => {
+    let PostsDataMapP = props.PostsData.map((p) => {
         return (<Fragment key={p.id} >
             <Post message={p.message} LikesCount={p.likescount} DislikesCount={p.dislikescount}/>
             <Like message={p.likesdata}/>
@@ -15,11 +15,18 @@ const MyPosts = ({PostsData}) => {
         </Fragment>)
     })
 
-    let newPostElement = React.createRef();
-    // let addText = () => {
-    // if (newPostElement.current.value) = Null ? 'prop' : postMessage = newPostElement.current.value;
-    //     AddPost(postMessage);
-    // }
+    let newPostProElement = React.createRef();
+
+    let proPost=(ttt) => {
+        let text=newPostProElement.current.value;
+        props.AddProPost(text);
+    }
+
+    let onChangeProText=(tttText) => {
+        props.updateProText(tttText);
+    }
+
+
     return (
         <div className={cs_style.items}>
 
@@ -28,9 +35,9 @@ const MyPosts = ({PostsData}) => {
             </div>
             <div className={cs_style.ButtonBlock}>
                 <div>
-                    <textarea ref={newPostElement}></textarea>
+                    <textarea onChange={() => onChangeProText(newPostProElement.current.value)} ref={newPostProElement}  value={props.MessageProTextData.InitText} placeholder={"Input text"} />
                 </div>
-                <button >Add post</button>
+                <button onClick={() => {proPost(props.MessageProTextData.InitText)}}>Add post</button>
                 <button>Remove</button>
             </div>
             <br></br>

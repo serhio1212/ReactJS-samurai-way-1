@@ -8,6 +8,7 @@ const Post = (props) => {
     <div className = {cs_style.items}>
     <img className = {cs_style.img} src={people} alt="Hoho" />
       <div> {props.message} +({props.LikesCount}) -({props.DislikesCount}) </div>
+      {console.log("post component make job")}
       </div>
     </div>
 )}
