@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from "react-dom/client";
 import './App.css';
 import Header from './components/Header/Header.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'

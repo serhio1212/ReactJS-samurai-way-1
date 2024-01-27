@@ -1,4 +1,7 @@
-import { reTree } from "../render";
+let reTree = () =>{
+    console.log("Update TRUE");
+
+}
 
 let StateJS={
     ProfilePage: {
@@ -119,5 +122,10 @@ export function updateProText(tttText) {
         </>
     )
 }
+
+export const subscribe = (observer) => {
+    reTree = observer;
+}
+
 
 export default StateJS;
