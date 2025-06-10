@@ -1,14 +1,14 @@
 .DialogsItems {
-    background-color: #99e69f;
+  background-color: #99e69f;
 }
 
 .img {
-    width: 30px;
-    border-radius: 30px;
-    padding: 5px;
+  width: 30px;
+  border-radius: 30px;
+  padding: 5px;
 }
 
 .blocks {
-    display:flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }

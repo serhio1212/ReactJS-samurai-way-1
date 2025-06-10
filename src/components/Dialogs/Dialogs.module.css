@@ -1,7 +1,7 @@
 .Dialogs {
-    grid-area: с;
-    background-color: #99e69f;
-    border:1px solid midnightblue;
+  grid-area: с;
+  background-color: #99e69f;
+  border: 1px solid midnightblue;
 }
 
 /*.dialogsItems {
@@ -10,18 +10,15 @@
     border:1px solid midnightblue;
 }*/
 
-
 .messages {
-    padding: 10px;
-   /* border:1px solid black;*/
-    border-left: 1px solid midnightblue;
-/*    border-right: 1px solid midnightblue;
+  padding: 10px;
+  /* border:1px solid black;*/
+  border-left: 1px solid midnightblue;
+  /*    border-right: 1px solid midnightblue;
     border-top: 1px solid midnightblue;
     border-bottom: 1px solid midnightblue;*/
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
-
-

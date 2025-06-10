@@ -1,3 +1,8 @@
+/*.content {*/
+/*  grid-area: h;*/
+/*  background-color: #99e69f;*/
+/*}*/
+
 .items {
   color: #0050ff;
 }
@@ -9,7 +14,6 @@
 .ButtonBlock {
   padding: 5px;
 }
-
 
 .items .a {
   color: #0050ff;

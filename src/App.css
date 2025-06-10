@@ -1,30 +1,33 @@
+* {
+  cursor:
+    url("./components/image/drawing.svg") 10 10,
+    auto;
+}
+
 .app-flex {
-    display: flex;
-    width: 1200px;
+  display: flex;
 }
 
 .app-wrapper {
-    margin: 0 auto;
-    display: grid;
-    width: 1200px;
-    grid-template-areas:
-  "h h"
-  "n c";
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
+  margin: 0 auto;
+  display: grid;
+  width: 1200px;
+  grid-template-areas:
+    "h h"
+    "n c";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
 }
 
 .app-wrapper-content {
-    .content {
-        grid-area: c;
-        background-color: #99e69f;
-    }
+  .content {
+    grid-area: c;
+    background-color: #99e69f;
+  }
 
-
-    .img {
-        width: 100%;
-        height: 400px;
-    }
-
+  .img {
+    width: 100%;
+    height: 400px;
+  }
 }
