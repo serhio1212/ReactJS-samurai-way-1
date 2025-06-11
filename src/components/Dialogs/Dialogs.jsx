@@ -1,7 +1,6 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import cs_style from "./Dialogs.module.css";
-
 
 function Dialogs(props) {
   let DialogItemMap = props.DialogsData.map((d, l) => (
@@ -12,7 +11,6 @@ function Dialogs(props) {
     <div className={cs_style.Dialogs}>
       {DialogItemMap}
       {/*{DialogsMessageMap}*/}
-
     </div>
   );
 }

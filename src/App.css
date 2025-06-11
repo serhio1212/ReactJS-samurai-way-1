@@ -1,7 +1,5 @@
 * {
-  cursor:
-    url("./components/image/drawing.svg") 10 10,
-    auto;
+  cursor: url("./components/image/drawing.svg") 10 10, auto;
 }
 
 .app-flex {

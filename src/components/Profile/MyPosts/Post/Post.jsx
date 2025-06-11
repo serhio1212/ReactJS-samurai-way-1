@@ -1,6 +1,6 @@
 import React from "react";
-import cs_style from "./Post.module.css";
 import people from "../../../../img/people-transparent.png";
+import cs_style from "./Post.module.css";
 
 const Post = (props) => {
   return (

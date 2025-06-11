@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import cs_style from "./Like.module.css";
 
 const Like = (props) => {

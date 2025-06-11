@@ -2,7 +2,6 @@ import React from "react";
 import myImage from "../../img/desktop-wallpaper.jpg";
 import cs_style from "./common.module.css";
 
-
 function Common(props) {
   return (
     <div>

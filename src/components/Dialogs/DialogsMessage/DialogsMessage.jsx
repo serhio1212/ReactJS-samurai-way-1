@@ -16,10 +16,6 @@ function DialogsMessage(props) {
 
   return (
     <div>
-      {/*<div className={cs_style.dialog}>{props.MessageValue.map(el => el.name)}</div>*/}
-      {/*{props.MessagesData.map((it) => props.id === props.MessagesData[it.id].idAcc ? ((tr) ?  (tr = !tr) || (*/}
-      {/*    <p key={it.id}>{props.MessagesData[it.id].message}</p>) : (tr = !tr) && (*/}
-      {/*    <p key={it.id} className={cs_style.messLeft}>{props.MessagesData[it.id].message}</p>)) : "")}*/}
       {props.MessagesData.map((it) => {
         if (
           props.id === props.MessagesData[it.id].idChat &&

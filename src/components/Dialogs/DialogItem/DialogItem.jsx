@@ -1,6 +1,6 @@
 import React from "react";
-import cs_style from "./DialogItem.module.css";
 import { NavLink } from "react-router-dom";
+import cs_style from "./DialogItem.module.css";
 
 function DialogItem(props) {
   return (
