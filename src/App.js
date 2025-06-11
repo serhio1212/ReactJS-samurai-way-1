@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Profile from "./components/Profile/Profile.jsx";
@@ -15,14 +12,13 @@ import Common from "./components/common/common.jsx";
 import DialogsMessage from "./components/Dialogs/DialogsMessage/DialogsMessage.jsx";
 import "./App.css";
 
-
-function App({ StateJS, AddPost, AddProfilePost, updateText, updateProfileText }) {
+function App({ StateJS, Dispatch }) {
   return (
     <div className="app-flex">
       <div className="app-wrapper">
         <Header />
         <Navbar ffriends={StateJS.sidebar.perusers} />
-      
+
         <div className="app-wrapper-content">
           <Routes>
             <Route path="/" element={<Common />} />
@@ -30,8 +26,7 @@ function App({ StateJS, AddPost, AddProfilePost, updateText, updateProfileText }
               path="Profile"
               element={
                 <Profile
-                  AddProfilePost={AddProfilePost}
-                  updateProfileText={updateProfileText}
+                  Dispatch={Dispatch}
                   PostsData={StateJS.ProfilePage.PostsData}
                   MessageProfile={StateJS.MessageProfile}
                 />
@@ -42,9 +37,8 @@ function App({ StateJS, AddPost, AddProfilePost, updateText, updateProfileText }
                 path="Messages"
                 element={
                   <MyPosts
-                    AddProfilePost={AddProfilePost}
+                    Dispatch={Dispatch}
                     MessageProfile={StateJS.MessageProfile}
-                    updateProfileText={updateProfileText}
                     PostsData={StateJS.ProfilePage.PostsData}
                   />
                 }
@@ -56,9 +50,8 @@ function App({ StateJS, AddPost, AddProfilePost, updateText, updateProfileText }
                 <Dialogs
                   MessagesData={StateJS.MessagePage.MessagesData}
                   DialogsData={StateJS.MessagePage.DialogsData}
-                  AddProfilePost={AddProfilePost}
+                  Dispatch={Dispatch}
                   MessageProfile={StateJS.MessageProfile}
-                  updateText={updateText}
                 />
               }
             />
@@ -72,9 +65,8 @@ function App({ StateJS, AddPost, AddProfilePost, updateText, updateProfileText }
                     id={k.id}
                     idAcc={k.idAcc}
                     MessagesData={StateJS.MessagePage.MessagesData}
-                    AddPost={AddPost}
+                    Dispatch={Dispatch}
                     MessageText={StateJS.MessageText}
-                    updateText={updateText}
                   />
                 }
               />

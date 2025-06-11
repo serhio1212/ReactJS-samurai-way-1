@@ -10,10 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 export let reTree = (
   StateJS,
-  AddPost,
-  AddProfilePost,
-  updateText,
-  updateProfileText
+  Dispatch
 ) => {
   root.render(
     // < React.StrictMode>
@@ -21,10 +18,7 @@ export let reTree = (
       <BrowserRouter>
         <App
           StateJS={Store.getState()}
-          AddPost={Store.Dispatch.bind(Store)}
-          AddProfilePost={Store.AddProfilePost.bind(Store)}
-          updateText={Store.updateText.bind(Store)}
-          updateProfileText={Store.updateProfileText.bind(Store)}
+          Dispatch={Store.Dispatch.bind(Store)}
         />
       </BrowserRouter>
     </div>
@@ -34,10 +28,7 @@ export let reTree = (
 
 reTree(
   Store.getState(),
-  Store.AddPost,
-  Store.AddProfilePost,
-  Store.updateText,
-  Store.updateProfileText
+  Store.Dispatch
 );
 Store.subscribe(reTree);
 

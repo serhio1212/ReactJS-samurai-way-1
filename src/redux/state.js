@@ -65,87 +65,78 @@ let Store = {
   },
 
   getState() {
-    let StateJS = this._StateJS
-    return StateJS
+    let StateJS = this._StateJS;
+    return StateJS;
   },
 
   subscribe(observer) {
     reTree = observer;
   },
 
-Dispatch(action) {
-  if (action.type == "ADD-POST") {    
-    let valID = Store.getState().MessagePage.MessagesData.length;
-    let newPost = {
-      id: valID,
-      idChat: idAcc,
-      idAcc: idAcc,
-      message: Store.getState().MessageText.InitText,
-    };
-    Store.getState().MessageText.InitText !== ""
-      ? Store.getState().MessagePage.MessagesData.push(newPost)
-      : console.log("Text not input");
+  Dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let valID = Store.getState().MessagePage.MessagesData.length;
+      let newPost = {
+        id: valID,
+        idChat: action.idAcc,
+        idAcc: action.idAcc,
+        message: Store.getState().MessageText.InitText,
+      };
+      Store.getState().MessageText.InitText !== ""
+        ? Store.getState().MessagePage.MessagesData.push(newPost)
+        : console.log("Text not input");
       Store.getState().MessageText.InitText = "";
-    reTree(     
-       Store.getState(),
-      this.AddPost,
-      this.AddProfilePost,
-      this.updateText,
-      this.updateProfileText)
-  }
-},
+      reTree(
+        Store.getState(),
+        this.Dispatch
+      );
+    }
+    if (action.type === "ADD-PROFILE-POST") {
+      let valID = Store.getState().MessagePage.MessagesData.length;
 
+      let newProfilePost = {
+        id: valID,
+        message: action.text,
+        likesdata: "Go, Im ready",
+        dislikesdata: "",
+        likescount: "1",
+        dislikescount: "0",
+      };
 
-  
-
-  AddProfilePost(text) {
-    let valID = Store.getState().MessagePage.MessagesData.length;
-
-    let newProfilePost = {
-      id: valID,
-      message: text,
-      likesdata: "Go, Im ready",
-      dislikesdata: "",
-      likescount: "1",
-      dislikescount: "0",
-    };
-
-    Store.getState().MessageProfile.InitText !== ""
-      ? Store.getState().ProfilePage.PostsData.push(newProfilePost)
-      : console.log("Text not input");
+      Store.getState().MessageProfile.InitText !== ""
+        ? Store.getState().ProfilePage.PostsData.push(newProfilePost)
+        : console.log("Text not input");
 
       Store.getState().MessageProfile.InitText = "";
 
-    reTree(
-      Store.getState(),
-      this.AddPost,
-      this.AddProfilePost,
-      this.updateText,
-      this.updateProfileText
-    );
-  },
-  updateText(Text) {
-    Store.getState().MessageText.InitText = Text;
+      reTree(
+        Store.getState(),
+        this.Dispatch
+      );
+    }
+ 
+  if (action.type === "UPDATE-TEXT") {
+    Store.getState().MessageText.InitText = action.text;
 
     reTree(
       this.getState(),
-      this.AddPost,
-      this.AddProfilePost,
-      this.updateText,
-      this.updateProfileText
+      this.Dispatch
     );
-  },
-  updateProfileText(Text) {
-    Store.getState().MessageProfile.InitText = Text;
+  }
+  if (action.type === "UPDATE-PROFILE-TEXT") {
+    Store.getState().MessageProfile.InitText = action.Text;
     reTree(
       Store.getState(),
-      this.AddPost,
-      this.AddProfilePost,
-      this.updateText,
-      this.updateProfileText
+      this.Dispatch
     );
+  }
+
+
   },
-  
+
+  // updateProfileText(Text) {
+   
+  // }
 };
 
 export default Store;

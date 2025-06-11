@@ -23,11 +23,11 @@ const MyPosts = (props) => {
 
   let profilePost = (text) => {
     text = newPostProfileElement.current.value;
-    props.AddProfilePost(text);
+    props.Dispatch({type:"ADD-PROFILE-POST", text: text});
   };
 
-  let onChangeProfileText = (Text) => {
-    props.updateProfileText(Text);
+  let onChangeProfileText = (text) => {
+    props.Dispatch({type:"UPDATE-PROFILE-TEXT", text:text});
   };
 
   return (

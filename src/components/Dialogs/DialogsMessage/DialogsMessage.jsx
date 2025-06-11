@@ -7,11 +7,11 @@ function DialogsMessage(props) {
 
   let ppost = (idChat, idAcc) => {
     let text = dialogsPostElement.current.value;
-    props.AddPost(text, props.idAcc);
+    props.Dispatch({ type: "ADD-POST", text: text, idAcc: props.idAcc });
   };
 
-  let onChangeText = (ttext) => {
-    props.updateText(ttext);
+  let onChangeText = (text) => {
+    props.Dispatch({type : "UPDATE-TEXT", text: text});
   };
 
   return (
