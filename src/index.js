@@ -21,7 +21,7 @@ export let reTree = (
       <BrowserRouter>
         <App
           StateJS={Store.getState()}
-          AddPost={Store.AddPost.bind(Store)}
+          AddPost={Store.Dispatch.bind(Store)}
           AddProfilePost={Store.AddProfilePost.bind(Store)}
           updateText={Store.updateText.bind(Store)}
           updateProfileText={Store.updateProfileText.bind(Store)}

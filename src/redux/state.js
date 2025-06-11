@@ -63,35 +63,40 @@ let Store = {
       ],
     },
   },
+
   getState() {
     let StateJS = this._StateJS
     return StateJS
-  }
-  ,
-  AddPost(text, idAcc) {
-    let valID = Store.getState().MessagePage.MessagesData.length;
+  },
 
+  subscribe(observer) {
+    reTree = observer;
+  },
+
+Dispatch(action) {
+  if (action.type == "ADD-POST") {    
+    let valID = Store.getState().MessagePage.MessagesData.length;
     let newPost = {
       id: valID,
       idChat: idAcc,
       idAcc: idAcc,
       message: Store.getState().MessageText.InitText,
     };
-
     Store.getState().MessageText.InitText !== ""
       ? Store.getState().MessagePage.MessagesData.push(newPost)
       : console.log("Text not input");
-
       Store.getState().MessageText.InitText = "";
-
-    reTree(
-      Store.getState(),
+    reTree(     
+       Store.getState(),
       this.AddPost,
       this.AddProfilePost,
       this.updateText,
-      this.updateProfileText
-    );
-  },
+      this.updateProfileText)
+  }
+},
+
+
+  
 
   AddProfilePost(text) {
     let valID = Store.getState().MessagePage.MessagesData.length;
@@ -140,9 +145,7 @@ let Store = {
       this.updateProfileText
     );
   },
-  subscribe(observer) {
-    reTree = observer;
-  },
+  
 };
 
 export default Store;
