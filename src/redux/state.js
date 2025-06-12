@@ -2,6 +2,11 @@ let reTree = () => {
   console.log("Update TRUE");
 };
 
+const ADD_POST = "ADD-POST";
+const UPDATE_TEXT = "UPDATE-TEXT";
+const ADD_PROFILE_POST = "ADD-PROFILE-POST";
+const UPDATE_PROFILE_TEXT = "UPDATE-PROFILE-TEXT";
+
 let Store = {
   _StateJS: {
     ProfilePage: {
@@ -74,7 +79,7 @@ let Store = {
   },
 
   Dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       let valID = Store.getState().MessagePage.MessagesData.length;
       let newPost = {
         id: valID,
@@ -86,12 +91,9 @@ let Store = {
         ? Store.getState().MessagePage.MessagesData.push(newPost)
         : console.log("Text not input");
       Store.getState().MessageText.InitText = "";
-      reTree(
-        Store.getState(),
-        this.Dispatch
-      );
+      reTree(Store.getState(), this.Dispatch);
     }
-    if (action.type === "ADD-PROFILE-POST") {
+    if (action.type === ADD_PROFILE_POST) {
       let valID = Store.getState().MessagePage.MessagesData.length;
 
       let newProfilePost = {
@@ -109,34 +111,35 @@ let Store = {
 
       Store.getState().MessageProfile.InitText = "";
 
-      reTree(
-        Store.getState(),
-        this.Dispatch
-      );
+      reTree(Store.getState(), this.Dispatch);
     }
- 
-  if (action.type === "UPDATE-TEXT") {
-    Store.getState().MessageText.InitText = action.text;
 
-    reTree(
-      this.getState(),
-      this.Dispatch
-    );
-  }
-  if (action.type === "UPDATE-PROFILE-TEXT") {
-    Store.getState().MessageProfile.InitText = action.Text;
-    reTree(
-      Store.getState(),
-      this.Dispatch
-    );
-  }
+    if (action.type === UPDATE_TEXT) {
+      Store.getState().MessageText.InitText = action.text;
 
-
+      reTree(this.getState(), this.Dispatch);
+    }
+    if (action.type === UPDATE_PROFILE_TEXT) {
+      Store.getState().MessageProfile.InitText = action.Text;
+      reTree(Store.getState(), this.Dispatch);
+    }
   },
+};
 
-  // updateProfileText(Text) {
-   
-  // }
+export const addPostActionCreator = (text, idAcc) => {
+  return { type: ADD_POST, text: text, idAcc: idAcc };
+};
+
+export const updateTextActionCreator = (text) => {
+  return { type: UPDATE_TEXT, text: text };
+};
+
+export const addProfilePostActionCreator = (text) => {
+  return { type: ADD_PROFILE_POST, text: text };
+};
+
+export const updateProfileTextActionCreator = (text) => {
+  return { type: UPDATE_PROFILE_TEXT, text: text };
 };
 
 export default Store;

@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  addPostActionCreator,
+  updateTextActionCreator,
+} from "../../../redux/state";
 import cs_style from "./DialogsMessage.module.css";
 
 function DialogsMessage(props) {
@@ -7,11 +11,11 @@ function DialogsMessage(props) {
 
   let ppost = (idChat, idAcc) => {
     let text = dialogsPostElement.current.value;
-    props.Dispatch({ type: "ADD-POST", text: text, idAcc: props.idAcc });
+    props.Dispatch(addPostActionCreator(text, props.idAcc));
   };
 
   let onChangeText = (text) => {
-    props.Dispatch({type : "UPDATE-TEXT", text: text});
+    props.Dispatch(updateTextActionCreator(text));
   };
 
   return (
