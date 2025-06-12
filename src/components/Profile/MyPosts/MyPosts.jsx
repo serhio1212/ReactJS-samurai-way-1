@@ -2,6 +2,10 @@ import React, { Fragment } from "react";
 import Post from "./Post/Post.jsx";
 import Dislike from "./Post/Dislike/Dislike.jsx";
 import Like from "./Post/Like/Like.jsx";
+import {
+  addProfilePostActionCreator,
+  updateProfileTextActionCreator,
+} from "../../../redux/state.js";
 import cs_style from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
@@ -23,17 +27,19 @@ const MyPosts = (props) => {
 
   let profilePost = (text) => {
     text = newPostProfileElement.current.value;
-    props.Dispatch({type:"ADD-PROFILE-POST", text: text});
+    props.Dispatch(addProfilePostActionCreator(text));
   };
 
   let onChangeProfileText = (text) => {
-    props.Dispatch({type:"UPDATE-PROFILE-TEXT", text:text});
+    props.Dispatch(updateProfileTextActionCreator(text));
   };
 
   return (
     <div className={cs_style.items}>
       <div>
-        <a className={cs_style.a}>My post</a>
+        <a href="#hehe" className={cs_style.a}>
+          My post
+        </a>
       </div>
       <div className={cs_style.ButtonBlock}>
         <div>
@@ -55,7 +61,7 @@ const MyPosts = (props) => {
         </button>
         <button>Remove</button>
       </div>
-  
+
       <div>{PostsDataMapList}</div>
     </div>
   );
