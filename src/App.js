@@ -27,8 +27,8 @@ function App({ StateJS, Dispatch }) {
               element={
                 <Profile
                   Dispatch={Dispatch}
-                  PostsData={StateJS.ProfilePage.PostsData}
-                  MessageProfile={StateJS.MessageProfile}
+                  // PostsData={StateJS.ProfilePage.PostsData}
+                  ProfilePage={StateJS.ProfilePage}
                 />
               }
             >
@@ -38,12 +38,13 @@ function App({ StateJS, Dispatch }) {
                 element={
                   <MyPosts
                     Dispatch={Dispatch}
-                    MessageProfile={StateJS.MessageProfile}
-                    PostsData={StateJS.ProfilePage.PostsData}
+                    // MessageProfile={StateJS.ProfilePage.MessageProfile}
+                    ProfilePage={StateJS.ProfilePage}
                   />
                 }
               />
             </Route>
+
             <Route
               path="Dialogs"
               element={
@@ -51,10 +52,11 @@ function App({ StateJS, Dispatch }) {
                   MessagesData={StateJS.MessagePage.MessagesData}
                   DialogsData={StateJS.MessagePage.DialogsData}
                   Dispatch={Dispatch}
-                  MessageProfile={StateJS.MessageProfile}
+                  // MessageProfile={StateJS.ProfilePage.MessageProfile}
                 />
               }
             />
+
             {StateJS.MessagePage.DialogsData.map((k) => (
               <Route
                 key={k.id}
@@ -66,7 +68,7 @@ function App({ StateJS, Dispatch }) {
                     idAcc={k.idAcc}
                     MessagesData={StateJS.MessagePage.MessagesData}
                     Dispatch={Dispatch}
-                    MessageText={StateJS.MessageText}
+                    MessageText={StateJS.MessagePage.MessageText}
                   />
                 }
               />

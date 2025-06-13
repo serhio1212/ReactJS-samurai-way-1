@@ -2,7 +2,7 @@ import React from "react";
 import {
   addPostActionCreator,
   updateTextActionCreator,
-} from "../../../redux/state";
+} from "../../../redux/reducerMessagePage";
 import cs_style from "./DialogsMessage.module.css";
 
 function DialogsMessage(props) {

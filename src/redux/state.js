@@ -1,11 +1,10 @@
+import reducerProfilePage from "./reducerProfilePage";
+import reducerMessagePage from "./reducerMessagePage";
+import reducerSidebar from "./reducerSidebar";
+
 let reTree = () => {
   console.log("Update TRUE");
 };
-
-const ADD_POST = "ADD-POST";
-const UPDATE_TEXT = "UPDATE-TEXT";
-const ADD_PROFILE_POST = "ADD-PROFILE-POST";
-const UPDATE_PROFILE_TEXT = "UPDATE-PROFILE-TEXT";
 
 let Store = {
   _StateJS: {
@@ -36,6 +35,7 @@ let Store = {
           dislikescount: "0",
         },
       ],
+      MessageProfile: { InitText: "" },
     },
     MessagePage: {
       DialogsData: [
@@ -56,9 +56,9 @@ let Store = {
         { id: 7, idChat: 1, idAcc: 1, message: "Good!" },
         { id: 8, idChat: 1, idAcc: 0, message: "Nice!" },
       ],
+      MessageText: { InitText: "" },
     },
-    MessageText: { InitText: "" },
-    MessageProfile: { InitText: "" },
+
     sidebar: {
       perusers: [
         { id: 0, idAcc: 1, name: "Mama" },
@@ -79,67 +79,17 @@ let Store = {
   },
 
   Dispatch(action) {
-    if (action.type === ADD_POST) {
-      let valID = Store.getState().MessagePage.MessagesData.length;
-      let newPost = {
-        id: valID,
-        idChat: action.idAcc,
-        idAcc: action.idAcc,
-        message: Store.getState().MessageText.InitText,
-      };
-      Store.getState().MessageText.InitText !== ""
-        ? Store.getState().MessagePage.MessagesData.push(newPost)
-        : console.log("Text not input");
-      Store.getState().MessageText.InitText = "";
-      reTree(Store.getState(), this.Dispatch);
-    }
-    if (action.type === ADD_PROFILE_POST) {
-      let valID = Store.getState().MessagePage.MessagesData.length;
-
-      let newProfilePost = {
-        id: valID,
-        message: action.text,
-        likesdata: "Go, Im ready",
-        dislikesdata: "",
-        likescount: "1",
-        dislikescount: "0",
-      };
-
-      Store.getState().MessageProfile.InitText !== ""
-        ? Store.getState().ProfilePage.PostsData.push(newProfilePost)
-        : console.log("Text not input");
-
-      Store.getState().MessageProfile.InitText = "";
-
-      reTree(Store.getState(), this.Dispatch);
-    }
-
-    if (action.type === UPDATE_TEXT) {
-      Store.getState().MessageText.InitText = action.text;
-
-      reTree(this.getState(), this.Dispatch);
-    }
-    if (action.type === UPDATE_PROFILE_TEXT) {
-      Store.getState().MessageProfile.InitText = action.Text;
-      reTree(Store.getState(), this.Dispatch);
-    }
+    this.getState().ProfilePage = reducerProfilePage(
+      this.getState().ProfilePage,
+      action
+    );
+    this.getState().MessagePage = reducerMessagePage(
+      this.getState().MessagePage,
+      action
+    );
+    this.getState().sidebar = reducerSidebar(this.getState().sidebar, action);
+    reTree(Store.getState(), this.Dispatch);
   },
-};
-
-export const addPostActionCreator = (text, idAcc) => {
-  return { type: ADD_POST, text: text, idAcc: idAcc };
-};
-
-export const updateTextActionCreator = (text) => {
-  return { type: UPDATE_TEXT, text: text };
-};
-
-export const addProfilePostActionCreator = (text) => {
-  return { type: ADD_PROFILE_POST, text: text };
-};
-
-export const updateProfileTextActionCreator = (text) => {
-  return { type: UPDATE_PROFILE_TEXT, text: text };
 };
 
 export default Store;

@@ -5,11 +5,11 @@ import Like from "./Post/Like/Like.jsx";
 import {
   addProfilePostActionCreator,
   updateProfileTextActionCreator,
-} from "../../../redux/state.js";
+} from "../../../redux/reducerProfilePage.js";
 import cs_style from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
-  let PostsDataMapList = props.PostsData.map((post) => {
+  let PostsDataMapList = props.ProfilePage.PostsData.map((post) => {
     return (
       <Fragment key={post.id}>
         <Post
@@ -48,13 +48,13 @@ const MyPosts = (props) => {
               onChangeProfileText(newPostProfileElement.current.value)
             }
             ref={newPostProfileElement}
-            value={props.MessageProfile.InitText}
+            value={props.ProfilePage.MessageProfile.InitText}
             placeholder={"Input text"}
           />
         </div>
         <button
           onClick={() => {
-            profilePost(props.MessageProfile.InitText);
+            profilePost(props.ProfilePage.MessageProfile.InitText);
           }}
         >
           Add post
