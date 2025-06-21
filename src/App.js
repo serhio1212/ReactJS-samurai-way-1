@@ -11,13 +11,18 @@ import Settings from "./components/Settings/Settings.jsx";
 import Common from "./components/common/common.jsx";
 import DialogsMessage from "./components/Dialogs/DialogsMessage/DialogsMessage.jsx";
 import "./App.css";
+import { useSelector } from "react-redux";
 
-function App({ StateJS, Dispatch }) {
+function App() {
+  // debugger;
+  const Sidebar = useSelector((store) => store.sidebar);
+  const ProfilePage = useSelector((store) => store.ProfilePage);
+  const MessagePage = useSelector((store) => store.MessagePage);
   return (
     <div className="app-flex">
       <div className="app-wrapper">
         <Header />
-        <Navbar ffriends={StateJS.sidebar.perusers} />
+        <Navbar ffriends={Sidebar.perusers} />
 
         <div className="app-wrapper-content">
           <Routes>
@@ -26,9 +31,8 @@ function App({ StateJS, Dispatch }) {
               path="Profile"
               element={
                 <Profile
-                  Dispatch={Dispatch}
-                  // PostsData={StateJS.ProfilePage.PostsData}
-                  ProfilePage={StateJS.ProfilePage}
+                  // PostsData={Store.ProfilePage.PostsData}
+                  ProfilePage={ProfilePage}
                 />
               }
             >
@@ -37,9 +41,8 @@ function App({ StateJS, Dispatch }) {
                 path="Messages"
                 element={
                   <MyPosts
-                    Dispatch={Dispatch}
-                    // MessageProfile={StateJS.ProfilePage.MessageProfile}
-                    ProfilePage={StateJS.ProfilePage}
+                    // MessageProfile={Store.ProfilePage.MessageProfile}
+                    ProfilePage={ProfilePage}
                   />
                 }
               />
@@ -49,15 +52,14 @@ function App({ StateJS, Dispatch }) {
               path="Dialogs"
               element={
                 <Dialogs
-                  MessagesData={StateJS.MessagePage.MessagesData}
-                  DialogsData={StateJS.MessagePage.DialogsData}
-                  Dispatch={Dispatch}
-                  // MessageProfile={StateJS.ProfilePage.MessageProfile}
+                  MessagesData={MessagePage.MessagesData}
+                  DialogsData={MessagePage.DialogsData}
+                  // MessageProfile={Store.ProfilePage.MessageProfile}
                 />
               }
             />
 
-            {StateJS.MessagePage.DialogsData.map((k) => (
+            {MessagePage.DialogsData.map((k) => (
               <Route
                 key={k.id}
                 exact
@@ -66,9 +68,8 @@ function App({ StateJS, Dispatch }) {
                   <DialogsMessage
                     id={k.id}
                     idAcc={k.idAcc}
-                    MessagesData={StateJS.MessagePage.MessagesData}
-                    Dispatch={Dispatch}
-                    MessageText={StateJS.MessagePage.MessageText}
+                    MessagesData={MessagePage.MessagesData}
+                    MessageText={MessagePage.MessageText}
                   />
                 }
               />

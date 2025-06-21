@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addPostActionCreator,
   updateTextActionCreator,
@@ -8,14 +9,15 @@ import cs_style from "./DialogsMessage.module.css";
 function DialogsMessage(props) {
   let userID = props.idAcc;
   let dialogsPostElement = React.createRef();
+  const dispatch = useDispatch();
 
   let ppost = (idChat, idAcc) => {
     let text = dialogsPostElement.current.value;
-    props.Dispatch(addPostActionCreator(text, props.idAcc));
+    dispatch(addPostActionCreator(text, props.idAcc));
   };
 
   let onChangeText = (text) => {
-    props.Dispatch(updateTextActionCreator(text));
+    dispatch(updateTextActionCreator(text));
   };
 
   return (
