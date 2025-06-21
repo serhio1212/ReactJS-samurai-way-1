@@ -9,30 +9,64 @@ export const updateProfileTextActionCreator = (text) => {
   return { type: UPDATE_PROFILE_TEXT, text: text };
 };
 
-const reducerProfilePage = (ProfilePage, action) => {
+const initialState = {
+  PostsData: [
+    {
+      id: 0,
+      message: "Hi evereone",
+      likesdata: "Fantastic post",
+      dislikesdata: "",
+      likescount: "1",
+      dislikescount: "0",
+    },
+    {
+      id: 1,
+      message: "My first post",
+      likesdata: "",
+      dislikesdata: "No matter",
+      likescount: "0",
+      dislikescount: "1",
+    },
+    {
+      id: 2,
+      message: "Battle",
+      likesdata: "Go, Im ready",
+      dislikesdata: "",
+      likescount: "1",
+      dislikescount: "0",
+    },
+  ],
+  MessageProfile: { InitText: "" },
+};
+
+const reducerProfilePage = (ProfilePage = initialState, action) => {
   switch (action.type) {
     case ADD_PROFILE_POST:
-      let valID = ProfilePage.PostsData.length;
+      if (ProfilePage.MessageProfile.InitText !== "") {
+        let valID = ProfilePage.PostsData.length;
 
-      let newProfilePost = {
-        id: valID,
-        message: action.text,
-        likesdata: "Go, Im ready",
-        dislikesdata: "",
-        likescount: "1",
-        dislikescount: "0",
-      };
-
-      ProfilePage.MessageProfile.InitText !== ""
-        ? ProfilePage.PostsData.push(newProfilePost)
-        : console.log("Text not input");
-
-      ProfilePage.MessageProfile.InitText = "";
-      return ProfilePage;
+        let newProfilePost = {
+          id: valID,
+          message: action.text,
+          likesdata: "Go, Im ready",
+          dislikesdata: "",
+          likescount: "1",
+          dislikescount: "0",
+        };
+        return {
+          ...ProfilePage,
+          PostsData: [...ProfilePage.PostsData, newProfilePost],
+          MessageProfile: { InitText: "" },
+        };
+      } else {
+        console.log("Text not input");
+        return ProfilePage;
+      }
 
     case UPDATE_PROFILE_TEXT:
-      ProfilePage.MessageProfile.InitText = action.Text;
-      return ProfilePage;
+      // ProfilePage.MessageProfile.InitText = action.Text;
+
+      return { ...ProfilePage, MessageProfile: { InitText: action.Text } };
 
     default:
       return ProfilePage;

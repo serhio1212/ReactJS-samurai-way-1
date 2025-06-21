@@ -88,7 +88,8 @@ let Store = {
       action
     );
     this.getState().sidebar = reducerSidebar(this.getState().sidebar, action);
-    reTree(Store.getState(), this.Dispatch);
+    
+    reTree();
   },
 };
 

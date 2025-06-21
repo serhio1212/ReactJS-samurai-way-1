@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Post from "./Post/Post.jsx";
 import Dislike from "./Post/Dislike/Dislike.jsx";
 import Like from "./Post/Like/Like.jsx";
@@ -23,15 +24,17 @@ const MyPosts = (props) => {
     );
   });
 
+  const dispatch = useDispatch();
+
   let newPostProfileElement = React.createRef();
 
   let profilePost = (text) => {
     text = newPostProfileElement.current.value;
-    props.Dispatch(addProfilePostActionCreator(text));
+    dispatch(addProfilePostActionCreator(text));
   };
 
   let onChangeProfileText = (text) => {
-    props.Dispatch(updateProfileTextActionCreator(text));
+    dispatch(updateProfileTextActionCreator(text));
   };
 
   return (
