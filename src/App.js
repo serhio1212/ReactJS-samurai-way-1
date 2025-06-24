@@ -33,7 +33,7 @@ function App(props) {
               <Route index element={<h3>TASK</h3>} />
               <Route
                 path="Messages"
-                element={<MyPostsContainer ProfilePage={ProfilePage} />}
+                element={<MyPostsContainer />}
               />
             </Route>
 

@@ -5,24 +5,31 @@ import {
   addProfilePostActionCreator,
   updateProfileTextActionCreator,
 } from "../../../redux/reducerProfilePage.js";
+import StoreContext from "../../../redux/StoreContext.js";
 
 const MyPostsContainer = (props) => {
-  const dispatch = useDispatch();
-
-  let addProfilePost = (text) => {
-    dispatch(addProfilePostActionCreator(text));
-  };
-
-  let ChangeProfileText = (text) => {
-    dispatch(updateProfileTextActionCreator(text));
-  };
-
   return (
-    <MyPosts
-      addProfilePost={addProfilePost}
-      ChangeProfileText={ChangeProfileText}
-      ProfilePage={props.ProfilePage}
-    />
+    <StoreContext.Consumer>
+      {(Store) => {
+        // const dispatch = useDispatch();
+
+        let addProfilePost = (text) => {
+          Store.dispatch(addProfilePostActionCreator(text));
+        };
+
+        let ChangeProfileText = (text) => {
+          Store.dispatch(updateProfileTextActionCreator(text));
+        };
+
+        return (
+          <MyPosts
+            addProfilePost={addProfilePost}
+            ChangeProfileText={ChangeProfileText}
+            ProfilePage={Store.getState().ProfilePage}
+          />
+        );
+      }}
+    </StoreContext.Consumer>
   );
 };
 export default MyPostsContainer;

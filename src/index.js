@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import Store from "./redux/redux-store.js";
+import StoreContext from "./redux/StoreContext.js";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import "./index.css";
@@ -15,7 +16,9 @@ export let reTree = () => {
     <div>
       <Provider store={Store}>
         <BrowserRouter>
-          <App />
+          <StoreContext.Provider value = {Store}>
+            <App />
+          </StoreContext.Provider>
         </BrowserRouter>
       </Provider>
     </div>
