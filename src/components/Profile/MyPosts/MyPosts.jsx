@@ -1,12 +1,7 @@
 import React, { Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Post from "./Post/Post.jsx";
 import Dislike from "./Post/Dislike/Dislike.jsx";
 import Like from "./Post/Like/Like.jsx";
-import {
-  addProfilePostActionCreator,
-  updateProfileTextActionCreator,
-} from "../../../redux/reducerProfilePage.js";
 import cs_style from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
@@ -24,17 +19,15 @@ const MyPosts = (props) => {
     );
   });
 
-  const dispatch = useDispatch();
-
   let newPostProfileElement = React.createRef();
 
   let profilePost = (text) => {
     text = newPostProfileElement.current.value;
-    dispatch(addProfilePostActionCreator(text));
+    props.addProfilePost(text);
   };
 
   let onChangeProfileText = (text) => {
-    dispatch(updateProfileTextActionCreator(text));
+    props.ChangeProfileText(text);
   };
 
   return (

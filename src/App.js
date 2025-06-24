@@ -1,20 +1,19 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Header from "./components/Header/Header.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import Dialogs from "./components/Dialogs/Dialogs.jsx";
-import MyPosts from "./components/Profile/MyPosts/MyPosts.jsx";
 import News from "./components/News/News.jsx";
 import Music from "./components/Music/Music.jsx";
 import Settings from "./components/Settings/Settings.jsx";
 import Common from "./components/common/common.jsx";
-import DialogsMessage from "./components/Dialogs/DialogsMessage/DialogsMessage.jsx";
+import MyPostsContainer from "./components/Profile/MyPosts/MyPostsContainer.jsx";
+import DialogsMessageContainer from "./components/Dialogs/DialogsMessage/DialogsMessageContainer.jsx";
 import "./App.css";
-import { useSelector } from "react-redux";
 
-function App() {
-  // debugger;
+function App(props) {
   const Sidebar = useSelector((store) => store.sidebar);
   const ProfilePage = useSelector((store) => store.ProfilePage);
   const MessagePage = useSelector((store) => store.MessagePage);
@@ -29,22 +28,12 @@ function App() {
             <Route path="/" element={<Common />} />
             <Route
               path="Profile"
-              element={
-                <Profile
-                  // PostsData={Store.ProfilePage.PostsData}
-                  ProfilePage={ProfilePage}
-                />
-              }
+              element={<Profile ProfilePage={ProfilePage} />}
             >
               <Route index element={<h3>TASK</h3>} />
               <Route
                 path="Messages"
-                element={
-                  <MyPosts
-                    // MessageProfile={Store.ProfilePage.MessageProfile}
-                    ProfilePage={ProfilePage}
-                  />
-                }
+                element={<MyPostsContainer ProfilePage={ProfilePage} />}
               />
             </Route>
 
@@ -54,7 +43,6 @@ function App() {
                 <Dialogs
                   MessagesData={MessagePage.MessagesData}
                   DialogsData={MessagePage.DialogsData}
-                  // MessageProfile={Store.ProfilePage.MessageProfile}
                 />
               }
             />
@@ -65,7 +53,7 @@ function App() {
                 exact
                 path={`/Dialogs/${k.id}`}
                 element={
-                  <DialogsMessage
+                  <DialogsMessageContainer
                     id={k.id}
                     idAcc={k.idAcc}
                     MessagesData={MessagePage.MessagesData}

@@ -1,23 +1,17 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addPostActionCreator,
-  updateTextActionCreator,
-} from "../../../redux/reducerMessagePage";
 import cs_style from "./DialogsMessage.module.css";
 
 function DialogsMessage(props) {
   let userID = props.idAcc;
   let dialogsPostElement = React.createRef();
-  const dispatch = useDispatch();
 
-  let ppost = (idChat, idAcc) => {
+  let ppost = (idAcc) => {
     let text = dialogsPostElement.current.value;
-    dispatch(addPostActionCreator(text, props.idAcc));
+    props.ppostConatainer(text, props.idAcc);
   };
 
   let onChangeText = (text) => {
-    dispatch(updateTextActionCreator(text));
+    props.ChangeTextContainer(text);
   };
 
   return (

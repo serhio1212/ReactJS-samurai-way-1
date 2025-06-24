@@ -44,7 +44,6 @@ const reducerProfilePage = (ProfilePage = initialState, action) => {
     case ADD_PROFILE_POST:
       if (ProfilePage.MessageProfile.InitText !== "") {
         let valID = ProfilePage.PostsData.length;
-
         let newProfilePost = {
           id: valID,
           message: action.text,
@@ -62,12 +61,8 @@ const reducerProfilePage = (ProfilePage = initialState, action) => {
         console.log("Text not input");
         return ProfilePage;
       }
-
     case UPDATE_PROFILE_TEXT:
-      // ProfilePage.MessageProfile.InitText = action.Text;
-
       return { ...ProfilePage, MessageProfile: { InitText: action.Text } };
-
     default:
       return ProfilePage;
   }

@@ -1,6 +1,3 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-
 const ADD_POST = "ADD-POST";
 const UPDATE_TEXT = "UPDATE-TEXT";
 
