@@ -11,7 +11,7 @@ function DialogItem(props) {
           src={"/image/cat_" + props.id + ".jpeg"}
           alt="Ho-ho"
         />{" "}
-        <NavLink to={"/Dialogs/" + props.id}>{props.name}</NavLink>
+        <NavLink to={`/DialogsMessage/${props.id}/${props.idAcc}`}>{props.name}</NavLink>
       </div>
     </div>
   );

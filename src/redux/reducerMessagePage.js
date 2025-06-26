@@ -29,6 +29,7 @@ const initialState = {
     { id: 8, idChat: 1, idAcc: 0, message: "Nice!" },
   ],
   MessageText: { InitText: "" },
+  
 };
 
 const reducerMessagePage = (MessagePage = initialState, action) => {

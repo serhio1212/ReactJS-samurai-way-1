@@ -25,7 +25,7 @@ function Navbar(props) {
       </NavLink>
 
       <NavLink
-        to="Dialogs"
+        to="DialogsContainer"
         className={(NavData) =>
           NavData.isActive ? cs_style.active : cs_style.items
         }

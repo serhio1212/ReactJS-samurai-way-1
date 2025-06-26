@@ -1,41 +1,61 @@
 import React from "react";
 import cs_style from "./DialogsMessage.module.css";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  addPostActionCreator,
+  updateTextActionCreator,
+} from "../../../redux/reducerMessagePage";
 
 function DialogsMessage(props) {
-  let userID = props.idAcc;
+  const params = useParams();
+  const dispatch = useDispatch();
+ const  ppostContainer= (text, idAcc) => {
+    dispatch(addPostActionCreator(text, idAcc));
+  };
+ const ChangeTextContainer= (text) => {
+    dispatch(updateTextActionCreator(text));
+  };
+
+
+
+  // let userID = props.idAcc;
   let dialogsPostElement = React.createRef();
 
   let ppost = (idAcc) => {
     let text = dialogsPostElement.current.value;
-    props.ppostConatainer(text, props.idAcc);
+    ppostContainer(text, idAcc);
   };
 
   let onChangeText = (text) => {
-    props.ChangeTextContainer(text);
+    ChangeTextContainer(text);
   };
 
   return (
     <div>
-      {props.MessagesData.map((it) => {
+      {console.log(`${params.id}   -   ${params.idAcc}`)}
+      {props.MessagePage.MessagesData.map((it) => {
         if (
-          props.id === props.MessagesData[it.id].idChat &&
-          userID === props.MessagesData[it.id].idAcc
+          params.id == it.idChat &&
+          params.idAcc == it.idAcc
         ) {
           return (
             <p key={it.id}>
+               {console.log(`true`)}
               <img
                 className={cs_style.img}
                 src={"/image/cat_" + it.idAcc + ".jpeg"}
                 alt="Ho-ho"
               />{" "}
-              {props.MessagesData[it.id].message}
+              {it.message}
             </p>
           );
-        } else if (props.id === props.MessagesData[it.id].idChat) {
+        } else if (params.id === it.idChat) {
           return (
             <p key={it.id} className={cs_style.messLeft}>
+              {console.log(`else if`)}
               {" "}
-              {props.MessagesData[it.id].message}{" "}
+              {it.message}{" "}
               <img
                 className={cs_style.img}
                 src={"/image/cat_" + it.idAcc + ".jpeg"}
@@ -52,14 +72,14 @@ function DialogsMessage(props) {
         <textarea
           onChange={() => onChangeText(dialogsPostElement.current.value)}
           ref={dialogsPostElement}
-          value={props.MessageText.InitText}
+          value={props.MessagePage.MessageText.InitText}
           placeholder={"Input text"}
         />
       </div>
 
       <button
         onClick={() => {
-          ppost(props.MessagesData.idChat, props.MessagesData.idAcc);
+          ppost(params.idAcc);
         }}
       >
         Add post

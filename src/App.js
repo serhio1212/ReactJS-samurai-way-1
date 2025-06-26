@@ -4,19 +4,20 @@ import { useSelector } from "react-redux";
 import Header from "./components/Header/Header.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Profile from "./components/Profile/Profile.jsx";
-import Dialogs from "./components/Dialogs/Dialogs.jsx";
 import News from "./components/News/News.jsx";
 import Music from "./components/Music/Music.jsx";
 import Settings from "./components/Settings/Settings.jsx";
 import Common from "./components/common/common.jsx";
 import MyPostsContainer from "./components/Profile/MyPosts/MyPostsContainer.jsx";
-import DialogsMessageContainer from "./components/Dialogs/DialogsMessage/DialogsMessageContainer.jsx";
+import DialogsContainer from "./components/Dialogs/DialogsContainer.jsx";
+import DialogsMessage from "./components/Dialogs/DialogsMessage/DialogsMessage.jsx";
 import "./App.css";
 
 function App(props) {
   const Sidebar = useSelector((store) => store.sidebar);
   const ProfilePage = useSelector((store) => store.ProfilePage);
   const MessagePage = useSelector((store) => store.MessagePage);
+
   return (
     <div className="app-flex">
       <div className="app-wrapper">
@@ -31,37 +32,20 @@ function App(props) {
               element={<Profile ProfilePage={ProfilePage} />}
             >
               <Route index element={<h3>TASK</h3>} />
-              <Route
-                path="Messages"
-                element={<MyPostsContainer />}
-              />
+              <Route path="Messages" element={<MyPostsContainer />} />
             </Route>
 
-            <Route
-              path="Dialogs"
-              element={
-                <Dialogs
-                  MessagesData={MessagePage.MessagesData}
-                  DialogsData={MessagePage.DialogsData}
-                />
-              }
-            />
+            <Route path="DialogsContainer" element={<DialogsContainer />} />
 
-            {MessagePage.DialogsData.map((k) => (
+            {MessagePage.DialogsData.map((k, idAcc) => (
               <Route
                 key={k.id}
                 exact
-                path={`/Dialogs/${k.id}`}
-                element={
-                  <DialogsMessageContainer
-                    id={k.id}
-                    idAcc={k.idAcc}
-                    MessagesData={MessagePage.MessagesData}
-                    MessageText={MessagePage.MessageText}
-                  />
-                }
+                path={`/DialogsMessage/:id/:idAcc`}
+                element={<DialogsMessage MessagePage={MessagePage} />}
               />
             ))}
+            
             <Route path="News" element={<News />} />
             <Route path="Music" element={<Music />} />
             <Route path="Settings" element={<Settings />} />
