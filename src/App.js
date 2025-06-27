@@ -27,10 +27,8 @@ function App(props) {
         <div className="app-wrapper-content">
           <Routes>
             <Route path="/" element={<Common />} />
-            <Route
-              path="Profile"
-              element={<Profile ProfilePage={ProfilePage} />}
-            >
+
+            <Route path="Profile" element={<Profile />}>
               <Route index element={<h3>TASK</h3>} />
               <Route path="Messages" element={<MyPostsContainer />} />
             </Route>
@@ -45,7 +43,7 @@ function App(props) {
                 element={<DialogsMessage MessagePage={MessagePage} />}
               />
             ))}
-            
+
             <Route path="News" element={<News />} />
             <Route path="Music" element={<Music />} />
             <Route path="Settings" element={<Settings />} />

@@ -10,16 +10,13 @@ import {
 function DialogsMessage(props) {
   const params = useParams();
   const dispatch = useDispatch();
- const  ppostContainer= (text, idAcc) => {
+  const ppostContainer = (text, idAcc) => {
     dispatch(addPostActionCreator(text, idAcc));
   };
- const ChangeTextContainer= (text) => {
+  const ChangeTextContainer = (text) => {
     dispatch(updateTextActionCreator(text));
   };
 
-
-
-  // let userID = props.idAcc;
   let dialogsPostElement = React.createRef();
 
   let ppost = (idAcc) => {
@@ -35,13 +32,10 @@ function DialogsMessage(props) {
     <div>
       {console.log(`${params.id}   -   ${params.idAcc}`)}
       {props.MessagePage.MessagesData.map((it) => {
-        if (
-          params.id == it.idChat &&
-          params.idAcc == it.idAcc
-        ) {
+        if (params.id == it.idChat && params.idAcc == it.idAcc) {
           return (
             <p key={it.id}>
-               {console.log(`true`)}
+              {console.log(`true`)}
               <img
                 className={cs_style.img}
                 src={"/image/cat_" + it.idAcc + ".jpeg"}
@@ -53,9 +47,7 @@ function DialogsMessage(props) {
         } else if (params.id === it.idChat) {
           return (
             <p key={it.id} className={cs_style.messLeft}>
-              {console.log(`else if`)}
-              {" "}
-              {it.message}{" "}
+              {console.log(`else if`)} {it.message}{" "}
               <img
                 className={cs_style.img}
                 src={"/image/cat_" + it.idAcc + ".jpeg"}

@@ -7,11 +7,7 @@ function Dialogs(props) {
     <DialogItem key={d.name} name={d.name} id={d.id} idAcc={d.idAcc} />
   ));
 
-  return (
-    <div className={cs_style.Dialogs}>
-      {DialogItemMap}
-    </div>
-  );
+  return <div className={cs_style.Dialogs}>{DialogItemMap}</div>;
 }
 
 export default Dialogs;

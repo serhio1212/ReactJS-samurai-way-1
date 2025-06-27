@@ -7,16 +7,20 @@ import {
 
 let mapStateToProps = (state) => {
   return {
-    ProfilePage : state.ProfilePage
-  }
+    ProfilePage: state.ProfilePage,
+  };
 };
 let mapDispatchToProps = (dispatch) => {
   return {
-    addProfilePost : (text)=> {dispatch(addProfilePostActionCreator(text));},
-    ChangeProfileText : (text)=> {dispatch(updateProfileTextActionCreator(text));}
-  }
+    addProfilePost: (text) => {
+      dispatch(addProfilePostActionCreator(text));
+    },
+    ChangeProfileText: (text) => {
+      dispatch(updateProfileTextActionCreator(text));
+    },
+  };
 };
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps) (MyPosts);
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;
